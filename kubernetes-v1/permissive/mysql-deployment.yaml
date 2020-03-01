@@ -17,6 +17,8 @@ spec:
         app: mysql
         version: "5.6"
         visualize: "true"
+      annotations:
+        sidecar.istio.io/inject: 'true'
     spec:
       containers:
       - name: mysql

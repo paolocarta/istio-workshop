@@ -20,6 +20,8 @@ spec:
         serving: "true"
         version: "1.0"
         visualize: "true"
+      annotations:
+        sidecar.istio.io/inject: 'true'
     spec:
       restartPolicy: Always
       terminationGracePeriodSeconds: 30

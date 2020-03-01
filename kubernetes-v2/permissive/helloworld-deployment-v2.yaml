@@ -25,6 +25,8 @@ spec:
         version: "2.0"
         serving: "true"
         visualize: "true"
+      annotations:
+        sidecar.istio.io/inject: 'true'
     spec:
       restartPolicy: Always
       terminationGracePeriodSeconds: 30
