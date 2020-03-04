@@ -9,6 +9,7 @@ import java.util.Date;
 
 @Entity
 public class Message implements Serializable {
+
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Long id;

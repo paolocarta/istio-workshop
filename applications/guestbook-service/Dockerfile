@@ -1,8 +1,9 @@
-FROM openjdk:11-stretch
+FROM openjdk:11.0.6-jre-slim
 
-COPY target/guestbook-service.jar /app/app.jar
 COPY health-check.sh /app/health-check.sh
 RUN chmod +x /app/health-check.sh
+
+COPY target/guestbook-service.jar /app/app.jar
 
 EXPOSE 8080
 
