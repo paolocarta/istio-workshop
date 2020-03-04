@@ -61,11 +61,11 @@
 			<groupId>org.springframework.security</groupId>
 			<artifactId>spring-security-web</artifactId>
 		</dependency>
-		<dependency>
-			<groupId>io.github.resilience4j</groupId>
-			<artifactId>resilience4j-bulkhead</artifactId>
-			<version>0.10.0</version>
-		</dependency>
+<!--		<dependency>-->
+<!--			<groupId>io.github.resilience4j</groupId>-->
+<!--			<artifactId>resilience4j-bulkhead</artifactId>-->
+<!--			<version>0.10.0</version>-->
+<!--		</dependency>-->
 	</dependencies>
 
 	<parent>

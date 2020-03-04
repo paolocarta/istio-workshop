@@ -1,17 +1,17 @@
 
 package com.example.guestbook;
 
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.web.client.RestTemplate;
+
 import java.util.HashMap;
 import java.util.Map;
 
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
-import org.springframework.web.client.HttpStatusCodeException;
-import org.springframework.web.client.RestTemplate;
-
 public class HelloworldService {
 
-  private final static Log log = LogFactory.getLog(HelloworldService.class);
+  private final static Logger logger = LoggerFactory.getLogger(HelloworldService.class);
 
   private final RestTemplate restTemplate;
   private final String endpoint;
@@ -30,12 +30,7 @@ public class HelloworldService {
 
   public Map<String, String> greeting(String name) {
 
-    try {
       return restTemplate.getForObject(endpoint + "/" + name, Map.class);
-      
-    } catch (HttpStatusCodeException e) {
-      log.error("Error from Helloworld Service, falling back", e);
-      return greetingFallback();
-    }
+
   }
 }

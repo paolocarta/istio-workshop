@@ -3,6 +3,8 @@ package com.example.guestbook;
 
 import java.util.Map;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -13,6 +15,9 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 @Controller
 @SessionAttributes("name")
 public class HelloworldUiController {
+
+  private final static Logger logger = LoggerFactory.getLogger(HelloworldUiController.class);
+
 
   private final HelloworldService helloworldService;
   private final GuestbookService guestbookService;
@@ -27,6 +32,8 @@ public class HelloworldUiController {
 
   @GetMapping("/")
   public String index(Model model) {
+
+    logger.info("Inside get index method");
 
     if (model.containsAttribute("name")) {
       String name = (String) model.asMap().get("name");

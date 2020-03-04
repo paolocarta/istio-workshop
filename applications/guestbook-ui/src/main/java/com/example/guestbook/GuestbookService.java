@@ -15,6 +15,7 @@ import org.springframework.web.client.HttpStatusCodeException;
 import org.springframework.web.client.RestTemplate;
 
 public class GuestbookService {
+
   private static final Log log = LogFactory.getLog(GuestbookService.class);
   private final RestTemplate restTemplate;
   private final String endpoint;
@@ -26,28 +27,30 @@ public class GuestbookService {
   }
 
   public Map<String, String> add(String username, String message) {
+
     Map<String, String> payload = new HashMap<>();
+
     payload.put("username", username);
     payload.put("message", message);
     payload.put("timestamp", dateFormat.format(new Date()));
 
-    // Istio can handle circuit breaking. Don't need to retry here.
     return restTemplate.postForObject(endpoint, payload, Map.class);
   }
 
   public List<Map> allFallback() {
     Map<String, String> bulkheadEntry = new HashMap<>();
     bulkheadEntry.put("username", "system");
-    bulkheadEntry.put("message", "Guestbook Service is currenctly unavailable");
+    bulkheadEntry.put("message", "Guestbook Service is currently unavailable");
     return Arrays.asList(bulkheadEntry);
   }
 
   public List<Map> all() {
-    try {
+
       Map response = restTemplate.getForObject(endpoint, Map.class);
 
       Map embedded = (Map) response.get("_embedded");
       List<Map> messages = (List<Map>) embedded.get("messages");
+
       return messages.stream()
           .filter(message -> message.containsKey("_links"))
           .map(message -> (Map) message.get("_links"))
@@ -56,11 +59,6 @@ public class GuestbookService {
           .map(self -> (String) self.get("href"))
           .map(href -> restTemplate.getForObject(href, Map.class))
           .collect(Collectors.toList());
-    } catch (HttpStatusCodeException e) {
-      // Istio would've performed circuit breaking and retries
-      // but it doesn't handle bulkheads / returning default values on full failures.
-      log.error("Error from Guestbook Service, falling back", e);
-      return allFallback();
-    }
+
   }
 }
