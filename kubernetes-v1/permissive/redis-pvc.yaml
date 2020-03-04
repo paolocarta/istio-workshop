@@ -1,0 +1,16 @@
+kind: PersistentVolumeClaim
+apiVersion: v1
+metadata:
+  # annotations:    
+    # volume.beta.kubernetes.io/storage-provisioner: kubernetes.io/aws-ebs  
+  name: redis 
+  labels:
+    template: redis-persistent
+spec:
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 1Gi
+  # storageClassName: gp2
+  # volumeMode: Filesystem

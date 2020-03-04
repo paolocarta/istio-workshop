@@ -27,7 +27,7 @@ spec:
       terminationGracePeriodSeconds: 30
       containers:
       - name: guestbook-service
-        image: bygui86/guestbook-service:latest
+        image: clamer/guestbook-service:latest
         imagePullPolicy: Always
         livenessProbe:
           httpGet:

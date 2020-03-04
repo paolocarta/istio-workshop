@@ -27,6 +27,11 @@ spec:
         livenessProbe:
           tcpSocket:
             port: 6379
+          initialDelaySeconds: 30
+          timeoutSeconds: 1
+          periodSeconds: 10
+          successThreshold: 1
+          failureThreshold: 3
         ports:
         - name: redis-server
           containerPort: 6379
@@ -37,3 +42,10 @@ spec:
           limits:
             cpu: 1000m
             memory: 2000Mi
+        volumeMounts:
+          - name: redis-data
+            mountPath: /var/lib/redis/data
+      volumes:
+        - name: redis-data
+          persistentVolumeClaim:
+            claimName: redis
