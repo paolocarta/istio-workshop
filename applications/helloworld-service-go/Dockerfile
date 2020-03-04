@@ -1,5 +1,6 @@
 
-FROM golang:1.12-stretch AS gobuilder
+# FROM golang:1.12-stretch AS gobuilder
+FROM golang:1.14.0-alpine AS gobuilder
 
 WORKDIR /go/src/github.com/bygui86/helloworld-service-go
 COPY . .
@@ -7,6 +8,7 @@ COPY . .
 ENV GO111MODULE=on
 ENV CGO_ENABLED=0
 ENV GOOS=linux
+
 RUN go build -a -installsuffix cgo -o /bin/app .
 
 # ---
@@ -18,9 +20,10 @@ RUN apk add --no-cache bash
 RUN apk add --no-cache curl
 
 WORKDIR /usr/bin/
-COPY --from=gobuilder /bin/app .
 COPY health-check.sh /usr/bin/health-check.sh
 RUN chmod +x /usr/bin/health-check.sh
+
+COPY --from=gobuilder /bin/app .
 
 EXPOSE 8080
 EXPOSE 8090
