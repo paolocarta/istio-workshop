@@ -10,19 +10,19 @@ spec:
   selector:
     matchLabels:
       app: redis
-      version: "4.0.2"
+      version: "4.0.14-alpine"
   template:
     metadata:
       labels:
         app: redis
-        version: "4.0.2"
+        version: "4.0.14-alpine"
         visualize: "true"
       annotations:
         sidecar.istio.io/inject: 'true'
     spec:
       containers:
       - name: redis
-        image: redis:4.0.2
+        image: redis:4.0.14-alpine
         imagePullPolicy: Always
         livenessProbe:
           tcpSocket:
@@ -44,7 +44,7 @@ spec:
             memory: 2000Mi
         volumeMounts:
           - name: redis-data
-            mountPath: /var/lib/redis/data
+            mountPath: /data
       volumes:
         - name: redis-data
           persistentVolumeClaim:
