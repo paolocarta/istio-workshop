@@ -1,13 +1,15 @@
 package com.example.guestbook;
 
+import org.infinispan.spring.remote.session.configuration.EnableInfinispanRemoteHttpSession;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.cache.annotation.EnableCaching;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.session.data.redis.config.annotation.web.http.EnableRedisHttpSession;
 import org.springframework.web.client.RestTemplate;
 
 @Configuration
-@EnableRedisHttpSession
+@EnableInfinispanRemoteHttpSession
+@EnableCaching
 public class ApplicationConfig {
 
   @Bean
@@ -27,4 +29,9 @@ public class ApplicationConfig {
                           @Value("${backend.guestbook-service.url}") String endpoint) {
     return new GuestbookService(restTemplate, endpoint);
   }
+
+//  @Bean
+//  public SpringRemoteCacheManagerFactoryBean springCache() {
+//    return new SpringRemoteCacheManagerFactoryBean();
+//  }
 }

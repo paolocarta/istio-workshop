@@ -12,6 +12,10 @@
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<java.version>11</java.version>
+
+<!--		<version.infinispan.starter>2.1.8.redhat-00003</version.infinispan.starter>-->
+		<version.infinispan.starter>2.1.4.Final</version.infinispan.starter>
+		<version.infinispan>10.1.1.Final</version.infinispan>
 	</properties>
 
 	<dependencies>
@@ -35,11 +39,26 @@
 		</dependency>
 		<dependency>
 			<groupId>org.springframework.session</groupId>
-			<artifactId>spring-session-data-redis</artifactId>
+			<artifactId>spring-session-core</artifactId>
+<!--			<version>${version.spring.session}</version>-->
 		</dependency>
+<!--		<dependency>-->
+<!--			<groupId>org.springframework.session</groupId>-->
+<!--			<artifactId>spring-session-data-redis</artifactId>-->
+<!--		</dependency>-->
+<!--		<dependency>-->
+<!--			<groupId>org.springframework.boot</groupId>-->
+<!--			<artifactId>spring-boot-starter-data-redis</artifactId>-->
+<!--		</dependency>-->
+<!--		<dependency>-->
+<!--			<groupId>org.infinispan</groupId>-->
+<!--			<artifactId>infinispan-spring-boot-starter</artifactId>-->
+<!--			<version>${version.infinispan.starter}</version>-->
+<!--		</dependency>-->
 		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-data-redis</artifactId>
+			<groupId>org.infinispan</groupId>
+			<artifactId>infinispan-spring-boot-starter-remote</artifactId>
+			<version>${version.infinispan.starter}</version>
 		</dependency>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
@@ -81,6 +100,13 @@
 				<groupId>org.springframework.cloud</groupId>
 				<artifactId>spring-cloud-dependencies</artifactId>
 				<version>Greenwich.SR1</version>
+				<type>pom</type>
+				<scope>import</scope>
+			</dependency>
+			<dependency>
+				<groupId>org.infinispan</groupId>
+				<artifactId>infinispan-bom</artifactId>
+				<version>${version.infinispan}</version>
 				<type>pom</type>
 				<scope>import</scope>
 			</dependency>
