@@ -33,6 +33,16 @@ spec:
         env:
         - name: INFINISPAN_REMOTE_URI
           value: example-infinispan:11222
+        - name: INFINISPAN_REMOTE_USERNAME
+          valueFrom:
+            secretKeyRef:
+              name: example-infinispan-app-generated-secret
+              key: username
+        - name: INFINISPAN_REMOTE_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: example-infinispan-app-generated-secret
+              key: password
         livenessProbe:
           httpGet:
             path: /actuator/health
