@@ -97,3 +97,5 @@ vendor/*
 
 ########### Project specific
 helloworld-service
+
+.vscode/
