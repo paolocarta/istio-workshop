@@ -1,5 +1,7 @@
 package com.example.guestbook;
 
+import org.infinispan.client.hotrod.RemoteCacheManager;
+import org.infinispan.spring.remote.provider.SpringRemoteCacheManager;
 import org.infinispan.spring.remote.session.configuration.EnableInfinispanRemoteHttpSession;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.cache.annotation.EnableCaching;
@@ -30,8 +32,12 @@ public class ApplicationConfig {
     return new GuestbookService(restTemplate, endpoint);
   }
 
-//  @Bean
-//  public SpringRemoteCacheManagerFactoryBean springCache() {
-//    return new SpringRemoteCacheManagerFactoryBean();
-//  }
+  @Bean
+  public SpringRemoteCacheManager springRemoteCacheManager(RemoteCacheManager remoteCacheManager) {
+
+    remoteCacheManager.administration().getOrCreateCache("sessions", "default");
+    SpringRemoteCacheManager cacheManager = new SpringRemoteCacheManager(remoteCacheManager);
+
+    return cacheManager;
+  }
 }
