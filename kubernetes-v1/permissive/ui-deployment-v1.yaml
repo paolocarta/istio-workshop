@@ -28,7 +28,7 @@ spec:
       terminationGracePeriodSeconds: 30
       containers:
       - name: guestbook-ui
-        image: clamer/guestbook-ui:1.1-infinispan
+        image: clamer/guestbook-ui:1.0-infinispan-bean-config
         imagePullPolicy: Always
         env:
         - name: APPLICATION_NAME
