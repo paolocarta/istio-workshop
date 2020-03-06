@@ -28,21 +28,29 @@ spec:
       terminationGracePeriodSeconds: 30
       containers:
       - name: guestbook-ui
-        image: clamer/guestbook-ui:1.0-infinispan
+        image: clamer/guestbook-ui:1.1-infinispan
         imagePullPolicy: Always
         env:
-        - name: INFINISPAN_REMOTE_URI
-          value: example-infinispan:11222
+        - name: APPLICATION_NAME
+          value: example-infinispan
+        - name: SASL_MECHANISM
+          value: DIGEST-MD5
+        - name: USE_AUTH
+          value: 'true'
+        - name: USE_SSL
+          value: 'true'
+        - name: INFINISPAN_AUTH_REALM
+          value: ApplicationRealm
         - name: INFINISPAN_REMOTE_USERNAME
           valueFrom:
             secretKeyRef:
-              name: example-infinispan-app-generated-secret
-              key: username
+              name: example-infinispan
+              key: application-user
         - name: INFINISPAN_REMOTE_PASSWORD
           valueFrom:
             secretKeyRef:
-              name: example-infinispan-app-generated-secret
-              key: password
+              name: example-infinispan
+              key: application-password
         livenessProbe:
           httpGet:
             path: /actuator/health
