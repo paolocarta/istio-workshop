@@ -20,6 +20,10 @@ spec:
         serving: "true"
         version: "1.0"
         visualize: "true"
+        service-mesh.3scale.net: "true"
+        service-mesh.3scale.net/uid: "api"
+        service-mesh.3scale.net/service-id: "2"
+        service-mesh.3scale.net/credentials: "api"
       annotations:
         sidecar.istio.io/inject: 'true'
     spec:
