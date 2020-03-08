@@ -23,8 +23,8 @@ spec:
         ## Istio Adapter
         service-mesh.3scale.net: "true"
         service-mesh.3scale.net/authentication-method: ""        
-        service-mesh.3scale.net/service-id: "2"
-        service-mesh.3scale.net/credentials: "api"
+        service-mesh.3scale.net/service-id: "3"
+        service-mesh.3scale.net/credentials: "test"
       annotations:
         sidecar.istio.io/inject: 'true'
     spec:
