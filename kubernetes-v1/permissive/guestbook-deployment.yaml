@@ -20,8 +20,9 @@ spec:
         serving: "true"
         version: "1.0"
         visualize: "true"
+        ## Istio Adapter
         service-mesh.3scale.net: "true"
-        service-mesh.3scale.net/uid: "api"
+        service-mesh.3scale.net/authentication-method: ""        
         service-mesh.3scale.net/service-id: "2"
         service-mesh.3scale.net/credentials: "api"
       annotations:
