@@ -20,7 +20,7 @@ public class HelloworldUiController {
 
   private final static Logger logger = LoggerFactory.getLogger(HelloworldUiController.class);
 
-  @Autowired
+//  @Autowired
   private RemoteCache<String, String> defaultCache;
 
   private final HelloworldService helloworldService;
