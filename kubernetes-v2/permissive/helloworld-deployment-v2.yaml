@@ -1,0 +1,71 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: helloworld-service-v2
+  labels:
+    app: helloworld-service
+    version: "2.0"
+    visualize: "true"
+spec:
+  replicas: 1
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxUnavailable: 25%
+      maxSurge: 1
+  selector:
+    matchLabels:
+      app: helloworld-service
+      version: "2.0"
+      serving: "true"
+  template:
+    metadata:
+      labels:
+        app: helloworld-service
+        version: "2.0"
+        serving: "true"
+        visualize: "true"
+      annotations:
+        sidecar.istio.io/inject: 'true'
+    spec:
+      restartPolicy: Always
+      terminationGracePeriodSeconds: 30
+      containers:
+        - name: helloworld-service
+          image: clamer/helloworld-service-go:latest
+          imagePullPolicy: Always
+          envFrom:
+            - configMapRef:
+                name: helloworld-service-v1 # same as v1
+          ports:
+            - name: http
+              containerPort: 8080
+            - name: http-metrics
+              containerPort: 8090
+            - name: http-probes
+              containerPort: 8091
+          resources:
+            limits:
+              cpu: 250m
+              memory: 256Mi
+            requests:
+              cpu: 100m
+              memory: 128Mi
+          livenessProbe:
+            httpGet:
+              path: /live
+              port: 8091
+            initialDelaySeconds: 15
+            periodSeconds: 10
+            timeoutSeconds: 3
+            successThreshold: 1
+            failureThreshold: 3
+          readinessProbe:
+            httpGet:
+              path: /ready
+              port: 8091
+            initialDelaySeconds: 15
+            periodSeconds: 10
+            timeoutSeconds: 3
+            successThreshold: 1
+            failureThreshold: 3
