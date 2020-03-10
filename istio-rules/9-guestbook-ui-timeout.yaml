@@ -15,4 +15,4 @@ spec:
     - destination:
         host: guestbook-ui
         subset: v1
-    timeout: 3s
+    timeout: 5s
