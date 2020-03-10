@@ -30,7 +30,7 @@ spec:
       terminationGracePeriodSeconds: 30
       containers:
         - name: helloworld-service
-          image: bygui86/helloworld-service-go:latest
+          image: clamer/helloworld-service-go:latest
           imagePullPolicy: Always
           envFrom:
             - configMapRef:
