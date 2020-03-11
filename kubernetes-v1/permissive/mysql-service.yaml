@@ -5,6 +5,7 @@ metadata:
   labels:
     app: mysql
     visualize: "true"
+    type: workshop
 spec:
   ports:
     # the port that this service should serve on

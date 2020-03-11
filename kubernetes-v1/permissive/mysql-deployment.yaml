@@ -5,6 +5,7 @@ metadata:
   labels:
     app: mysql
     visualize: "true"
+    type: workshop
 spec:
   replicas: 1
   selector:
