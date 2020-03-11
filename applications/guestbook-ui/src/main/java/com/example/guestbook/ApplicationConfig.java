@@ -3,6 +3,7 @@ package com.example.guestbook;
 import org.infinispan.client.hotrod.RemoteCache;
 import org.infinispan.client.hotrod.RemoteCacheManager;
 import org.infinispan.spring.remote.provider.SpringRemoteCacheManager;
+import org.infinispan.spring.remote.session.configuration.EnableInfinispanRemoteHttpSession;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -15,7 +16,7 @@ import org.springframework.web.client.RestTemplate;
 import java.util.Set;
 
 @Configuration
-//@EnableInfinispanRemoteHttpSession
+@EnableInfinispanRemoteHttpSession
 @EnableCaching
 public class ApplicationConfig {
 

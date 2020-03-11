@@ -15,13 +15,10 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
 @Controller
-//@SessionAttributes("name")
+@SessionAttributes("name")
 public class HelloworldUiController {
 
   private final static Logger logger = LoggerFactory.getLogger(HelloworldUiController.class);
-
-//  @Autowired
-  private RemoteCache<String, String> defaultCache;
 
   private final HelloworldService helloworldService;
   private final GuestbookService guestbookService;
@@ -37,10 +34,8 @@ public class HelloworldUiController {
   @GetMapping("/")
   public String index(Model model) {
 
-    logger.info("Inside get index method");
-
-//    defaultCache.getName();
-
+//    logger.info("Inside get index method");
+    
     if (model.containsAttribute("name")) {
       String name = (String) model.asMap().get("name");
       Map<String, String> greeting = helloworldService.greeting(name);
