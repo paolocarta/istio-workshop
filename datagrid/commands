@@ -1,0 +1,3 @@
+oc new-app cache-service \
+  -p APPLICATION_USER=paolocarta \
+  -p APPLICATION_PASSWORD=paolocarta.1
