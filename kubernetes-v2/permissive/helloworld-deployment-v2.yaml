@@ -1,10 +1,10 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: helloworld-service-v1
+  name: helloworld-service-v2
   labels:
     app: helloworld-service
-    version: "1.0"
+    version: "2.0"
     visualize: "true"
 spec:
   replicas: 1
@@ -16,13 +16,13 @@ spec:
   selector:
     matchLabels:
       app: helloworld-service
-      version: "1.0"
+      version: "2.0"
       serving: "true"
   template:
     metadata:
       labels:
         app: helloworld-service
-        version: "1.0"
+        version: "2.0"
         serving: "true"
         visualize: "true"
       annotations:
@@ -36,7 +36,7 @@ spec:
           imagePullPolicy: Always
           envFrom:
             - configMapRef:
-                name: helloworld-service-v1
+                name: helloworld-service-v1 # same as v1
           ports:
             - name: http
               containerPort: 8080
@@ -52,24 +52,18 @@ spec:
               cpu: 100m
               memory: 128Mi
           livenessProbe:
-            exec:
-              command:
-                - "/usr/bin/health-check.sh"
-                - "localhost"
-                - "8091"
-                - "live"
+            httpGet:
+              path: /live
+              port: 8091
             initialDelaySeconds: 15
             periodSeconds: 10
             timeoutSeconds: 3
             successThreshold: 1
             failureThreshold: 3
           readinessProbe:
-            exec:
-              command:
-                - "/usr/bin/health-check.sh"
-                - "localhost"
-                - "8091"
-                - "live"
+            httpGet:
+              path: /ready
+              port: 8091
             initialDelaySeconds: 15
             periodSeconds: 10
             timeoutSeconds: 3
