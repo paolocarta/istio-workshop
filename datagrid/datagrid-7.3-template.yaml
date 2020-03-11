@@ -95,6 +95,8 @@ objects:
         labels:
           application: ${APPLICATION_NAME}
           deploymentConfig: ${APPLICATION_NAME}
+        annotations:
+          sidecar.istio.io/inject: 'true'
         name: ${APPLICATION_NAME}
       spec:
         containers:
