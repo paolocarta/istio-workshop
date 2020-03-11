@@ -33,7 +33,9 @@ spec:
         imagePullPolicy: Always
         env:
         - name: APPLICATION_NAME
-          value: example-infinispan
+          value: cache-service
+        - name: APPLICATION_URL
+          value: cache-service.demo-infinispan
         - name: SASL_MECHANISM
           value: DIGEST-MD5
         - name: USE_AUTH
@@ -45,12 +47,12 @@ spec:
         - name: INFINISPAN_REMOTE_USERNAME
           valueFrom:
             secretKeyRef:
-              name: example-infinispan
+              name: cache-service
               key: application-user
         - name: INFINISPAN_REMOTE_PASSWORD
           valueFrom:
             secretKeyRef:
-              name: example-infinispan
+              name: cache-service
               key: application-password
         livenessProbe:
           httpGet:
