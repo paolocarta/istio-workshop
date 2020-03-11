@@ -6,6 +6,7 @@ metadata:
   name: redis 
   labels:
     template: redis-persistent
+    type: workshop
 spec:
   accessModes:
     - ReadWriteOnce

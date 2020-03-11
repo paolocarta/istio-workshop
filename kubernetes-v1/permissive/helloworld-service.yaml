@@ -5,6 +5,7 @@ metadata:
   labels:
     app: helloworld-service
     visualize: "true"
+    type: workshop
 spec:
   selector:
     app: helloworld-service

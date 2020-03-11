@@ -6,6 +6,7 @@ metadata:
     app: guestbook-ui
     version: "1.0-infinispan"
     visualize: "true"
+    type: workshop
 spec:
   replicas: 2
   selector:

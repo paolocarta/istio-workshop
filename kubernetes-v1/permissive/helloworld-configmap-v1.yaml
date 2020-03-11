@@ -4,6 +4,7 @@ metadata:
   name: helloworld-service-v1
   labels:
     app: helloworld-service
+    type: workshop
 data:
   HELLOSVC_KUBE_HOST: "0.0.0.0"
   HELLOSVC_MONITOR_HOST: "0.0.0.0"

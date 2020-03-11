@@ -5,6 +5,7 @@ metadata:
   labels:
     app: guestbook-ui
     visualize: "true"
+    type: workshop
 spec:
   ports:
     - port: 80

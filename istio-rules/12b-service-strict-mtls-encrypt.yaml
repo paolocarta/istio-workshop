@@ -4,7 +4,7 @@ metadata:
   name: "default"
   namespace: "istio-demo"
 spec:
-  host: "*.helloworld-service.svc.cluster.local"
+  host: "*.helloworld-service.istio-demo.svc.cluster.local"
   trafficPolicy:
     tls:
       mode: ISTIO_MUTUAL
