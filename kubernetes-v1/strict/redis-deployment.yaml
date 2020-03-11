@@ -17,6 +17,8 @@ spec:
         app: redis
         version: "4.0.2"
         visualize: "true"
+      annotations:
+        sidecar.istio.io/inject: 'true'
     spec:
       containers:
       - name: redis
