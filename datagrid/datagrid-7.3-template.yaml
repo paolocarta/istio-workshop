@@ -15,15 +15,10 @@ metadata:
     openshift.io/support-url: https://www.redhat.com/en/services/support
     samples.operator.openshift.io/version: 4.3.1
     tags: database,datagrid
-  creationTimestamp: "2020-03-05T11:40:45Z"
   labels:
     samples.operator.openshift.io/managed: "true"
     template: cache-service
   name: cache-service
-  namespace: openshift
-  resourceVersion: "15281"
-  selfLink: /apis/template.openshift.io/v1/namespaces/openshift/templates/cache-service
-  uid: b5e215e2-65fc-4be8-8f11-495a129b6bfd
 objects:
 - apiVersion: v1
   kind: Secret

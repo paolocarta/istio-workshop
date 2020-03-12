@@ -7,3 +7,13 @@
 #   externalName: cache-service.demo-infinispan
 #   ports:
 #     - port: 11222
+# ---
+# kind: Endpoints
+# apiVersion: v1
+# metadata:
+#  name: datagrid-service
+# subsets:
+#  - addresses:
+#      - ip: xxx
+#    ports:
+#      - port: 11222
