@@ -43,22 +43,22 @@ public class ApplicationConfig {
   @Bean
   public SpringRemoteCacheManager springRemoteCacheManager(RemoteCacheManager remoteCacheManager) {
 
-//    remoteCacheManager.administration().getOrCreateCache("sessions", "default");
+    remoteCacheManager.administration().getOrCreateCache("sessions", "default");
     SpringRemoteCacheManager cacheManager = new SpringRemoteCacheManager(remoteCacheManager);
 
     return cacheManager;
   }
 
-  @Bean
-  @Qualifier("defaultCache")
-  public RemoteCache<String, String> defaultCache(RemoteCacheManager cacheManager) {
-    Set<String> cacheNames = cacheManager.getCacheNames();
-
-    logger.info("cache names: " + cacheNames.toString());
-
-    return null;
-
-  }
+//  @Bean
+//  @Qualifier("defaultCache")
+//  public RemoteCache<String, String> defaultCache(RemoteCacheManager cacheManager) {
+//    Set<String> cacheNames = cacheManager.getCacheNames();
+//
+//    logger.info("cache names: " + cacheNames.toString());
+//
+//    return null;
+//
+//  }
 
 //  @Value("spring.application.name")
 //  private String appName;

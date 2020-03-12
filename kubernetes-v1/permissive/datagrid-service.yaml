@@ -1,11 +1,9 @@
-kind: Service
-apiVersion: v1
-metadata:
-  name: datagrid-service
-spec:
-  type: ExternalName
-  externalName: cache-service.demo-infinispan.svc.cluster.local
-  ports:
-    - name: hotrod
-      protocol: TCP
-      port: 11222
+# kind: Service
+# apiVersion: v1
+# metadata:
+#   name: datagrid-service
+# spec:
+#   type: ExternalName
+#   externalName: cache-service.demo-infinispan
+#   ports:
+#     - port: 11222
