@@ -3,8 +3,7 @@
 
 ## 1. Clone
 ```
-git clone https://github.com/saturnism/istio-by-example.git
-cd istio-by-example/
+cd applications/
 ```
 
 ## 2. Build & Docker
@@ -14,14 +13,14 @@ export DOCKER_REGISTRY_USER=...
 echo "$DOCKER_REGISTRY_PASSWORD" | docker login -u "$DOCKER_REGISTRY_USER" --password-stdin
 ```
 ```
-cd applications/guestbook-service/
+cd guestbook-service/
 ./mvnw clean package
 docker build . -t $DOCKER_REGISTRY_USER/guestbook-service:latest
 docker push $DOCKER_REGISTRY_USER/guestbook-service:latest
 cd -
 ```
 ```
-cd applications/guestbook-ui/
+cd guestbook-ui/
 ./mvnw clean package
 docker build . -t $DOCKER_REGISTRY_USER/guestbook-ui:1.0
 docker push $DOCKER_REGISTRY_USER/guestbook-ui:1.0
@@ -29,21 +28,21 @@ cd -
 ```
 `Change background color in 'guestbook-ui/src/main/resources/templates/index.html'`
 ```
-cd applications/guestbook-ui/
+cd guestbook-ui/
 ./mvnw clean package
 docker build . -t $DOCKER_REGISTRY_USER/guestbook-ui:2.0
 docker push $DOCKER_REGISTRY_USER/guestbook-ui:2.0
 cd -
 ```
 ```
-cd applications/helloworld-service-java/
+cd helloworld-service-java/
 ./mvnw clean package
 docker build . -t $DOCKER_REGISTRY_USER/helloworld-service-java:latest
 docker push $DOCKER_REGISTRY_USER/helloworld-service-java:latest
 cd -
 ```
 ```
-cd applications/helloworld-service-go/
+cd helloworld-service-go/
 docker build . -t $DOCKER_REGISTRY_USER/helloworld-service-go:latest
 docker push $DOCKER_REGISTRY_USER/helloworld-service-go:latest
 cd -
