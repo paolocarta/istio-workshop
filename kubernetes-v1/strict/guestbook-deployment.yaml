@@ -6,6 +6,7 @@ metadata:
     app: guestbook-service
     version: "1.0"
     visualize: "true"
+    type: workshop
 spec:
   replicas: 2
   selector:
@@ -36,7 +37,7 @@ spec:
               - "localhost"
               - "8080"
               - "actuator/health"
-          initialDelaySeconds: 60
+          initialDelaySeconds: 10
           periodSeconds: 10
           timeoutSeconds: 3
           successThreshold: 1
@@ -48,7 +49,7 @@ spec:
               - "localhost"
               - "8080"
               - ""
-          initialDelaySeconds: 30
+          initialDelaySeconds: 20
           periodSeconds: 10
           timeoutSeconds: 3
           successThreshold: 1
