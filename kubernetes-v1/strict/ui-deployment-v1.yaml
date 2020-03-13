@@ -35,7 +35,7 @@ spec:
         - name: APPLICATION_NAME
           value: cache-service
         - name: APPLICATION_URL
-          value: cache-service
+          value: cache-service.demo-datagrid
         - name: SASL_MECHANISM
           value: DIGEST-MD5
         - name: USE_AUTH
@@ -61,7 +61,7 @@ spec:
               - "localhost"
               - "8080"
               - "actuator/health"
-          initialDelaySeconds: 60
+          initialDelaySeconds: 10
           periodSeconds: 10
           timeoutSeconds: 3
           successThreshold: 1
@@ -73,7 +73,7 @@ spec:
               - "localhost"
               - "8080"
               - ""
-          initialDelaySeconds: 30
+          initialDelaySeconds: 20
           periodSeconds: 10
           timeoutSeconds: 3
           successThreshold: 1

@@ -56,7 +56,7 @@ spec:
             httpGet:
               path: /live
               port: 8091
-            initialDelaySeconds: 15
+            initialDelaySeconds: 5
             periodSeconds: 10
             timeoutSeconds: 3
             successThreshold: 1
