@@ -21,6 +21,11 @@ spec:
         serving: "true"
         version: "1.0"
         visualize: "true"
+        ## Istio Adapter
+        service-mesh.3scale.net: "true"
+        service-mesh.3scale.net/authentication-method: ""        
+        service-mesh.3scale.net/service-id: "3"
+        service-mesh.3scale.net/credentials: "istio-api"
       annotations:
         sidecar.istio.io/inject: 'true'
     spec:
