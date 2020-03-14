@@ -31,6 +31,7 @@ spec:
     spec:
       restartPolicy: Always
       terminationGracePeriodSeconds: 30
+      serviceAccountName: guestbook-service
       containers:
       - name: guestbook-service
         image: clamer/guestbook-service:latest
@@ -69,3 +70,9 @@ spec:
           limits:
             cpu: 1500m
             memory: 1000Mi
+---
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: guestbook-service
+
