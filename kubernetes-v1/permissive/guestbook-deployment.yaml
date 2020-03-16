@@ -6,6 +6,7 @@ metadata:
     app: guestbook-service
     version: "1.0"
     visualize: "true"
+    type: workshop
 spec:
   replicas: 2
   selector:

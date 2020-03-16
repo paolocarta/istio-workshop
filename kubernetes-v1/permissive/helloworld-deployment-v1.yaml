@@ -6,6 +6,7 @@ metadata:
     app: helloworld-service
     version: "1.0"
     visualize: "true"
+    type: workshop
 spec:
   replicas: 1
   strategy:

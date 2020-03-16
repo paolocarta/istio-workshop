@@ -2,6 +2,8 @@ apiVersion: "authentication.istio.io/v1alpha1"
 kind: "Policy"
 metadata:
   name: mysql-nomtls
+  labels:
+    type: workshop
 spec:
   targets:
   - name: mysql     # The name of *your* K8s Service
