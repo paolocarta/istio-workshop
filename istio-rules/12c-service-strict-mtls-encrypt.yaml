@@ -8,3 +8,14 @@ spec:
   trafficPolicy:
     tls:
       mode: ISTIO_MUTUAL
+---
+apiVersion: "authentication.istio.io/v1alpha1"
+kind: "Policy"
+metadata:
+  name: "guestbook-service-policy"
+  namespace: "istio-demo-app"
+spec:
+  targets:
+  - name: guestbook-service
+  peers:
+  - mtls: {}
