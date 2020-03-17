@@ -1,18 +1,14 @@
 package com.example.guestbook;
 
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
-import java.util.Arrays;
-import java.util.Date;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.stream.Collectors;
-
+import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
-import org.springframework.web.client.HttpStatusCodeException;
 import org.springframework.web.client.RestTemplate;
+
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.*;
+import java.util.stream.Collectors;
 
 public class GuestbookService {
 
@@ -44,6 +40,7 @@ public class GuestbookService {
     return Arrays.asList(bulkheadEntry);
   }
 
+  @HystrixCommand(fallbackMethod = "allFallback")
   public List<Map> all() {
 
       Map response = restTemplate.getForObject(endpoint, Map.class);
