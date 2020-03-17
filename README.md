@@ -1,6 +1,9 @@
 
 # Istio by example
 
+Steps tutorial and explanation: http://bit.ly/istiolab-ocp-gdoc
+
+
 ## 1. Clone
 ```
 cd applications/
