@@ -28,7 +28,7 @@ spec:
       terminationGracePeriodSeconds: 30
       containers:
       - name: guestbook-ui
-        image: clamer/guestbook-ui:2.0
+        image: clamer/guestbook-ui:2.0-infinispan
         imagePullPolicy: Always
         livenessProbe:
           exec:
