@@ -30,11 +30,34 @@ spec:
       - name: guestbook-ui
         image: clamer/guestbook-ui:2.0-infinispan
         imagePullPolicy: Always
+        env:
+        - name: APPLICATION_NAME
+          value: cache-service
+        - name: APPLICATION_URL
+          value: cache-service.demo-datagrid
+        - name: SASL_MECHANISM
+          value: DIGEST-MD5
+        - name: USE_AUTH
+          value: 'true'
+        - name: USE_SSL
+          value: 'true'
+        - name: INFINISPAN_AUTH_REALM
+          value: ApplicationRealm
+        - name: INFINISPAN_REMOTE_USERNAME
+          valueFrom:
+            secretKeyRef:
+              name: cache-service
+              key: application-user
+        - name: INFINISPAN_REMOTE_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: cache-service
+              key: application-password
         livenessProbe:
           httpGet:
             path: /actuator/health
             port: 8080
-          initialDelaySeconds: 60
+          initialDelaySeconds: 10
           periodSeconds: 10
           timeoutSeconds: 3
           successThreshold: 1
@@ -43,7 +66,7 @@ spec:
           httpGet:
             path: /
             port: 8080
-          initialDelaySeconds: 30
+          initialDelaySeconds: 15
           periodSeconds: 10
           timeoutSeconds: 3
           successThreshold: 1
@@ -58,4 +81,3 @@ spec:
           limits:
             cpu: 1500m
             memory: 1000Mi
-
