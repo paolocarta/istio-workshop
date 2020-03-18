@@ -6,6 +6,7 @@ metadata:
     app: guestbook-ui
     version: "2.0"
     visualize: "true"
+    type: workshop
 spec:
   replicas: 2
   selector:
