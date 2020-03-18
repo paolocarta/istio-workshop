@@ -10,6 +10,8 @@ import org.springframework.web.client.RestTemplate;
 import java.util.HashMap;
 import java.util.Map;
 
+import static java.lang.String.*;
+
 public class HelloworldService {
 
   private final static Logger logger = LoggerFactory.getLogger(HelloworldService.class);
@@ -22,10 +24,10 @@ public class HelloworldService {
     this.endpoint = endpoint;
   }
 
-  public Map<String, String> greetingFallback() {
+  public Map<String, String> greetingFallback(String name) {
 
     Map<String, String> response = new HashMap<>();
-    response.put("greeting", "Hello guest!");
+    response.put("greeting", format("Hello %s!", name));
     return response;
   }
 
