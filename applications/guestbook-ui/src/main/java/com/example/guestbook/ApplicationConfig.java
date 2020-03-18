@@ -15,7 +15,6 @@ import org.springframework.web.client.RestTemplate;
 @Configuration
 @EnableInfinispanRemoteHttpSession
 @EnableCaching
-@EnableCircuitBreaker
 public class ApplicationConfig {
 
   private static final Logger logger = LoggerFactory.getLogger(ApplicationConfig.class);

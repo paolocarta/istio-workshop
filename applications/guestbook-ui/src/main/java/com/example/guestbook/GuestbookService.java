@@ -3,6 +3,7 @@ package com.example.guestbook;
 import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
+import org.springframework.web.client.HttpStatusCodeException;
 import org.springframework.web.client.RestTemplate;
 
 import java.text.DateFormat;
@@ -40,22 +41,25 @@ public class GuestbookService {
     return Arrays.asList(bulkheadEntry);
   }
 
-  @HystrixCommand(fallbackMethod = "allFallback")
   public List<Map> all() {
-
+    try {
       Map response = restTemplate.getForObject(endpoint, Map.class);
 
       Map embedded = (Map) response.get("_embedded");
       List<Map> messages = (List<Map>) embedded.get("messages");
-
       return messages.stream()
-          .filter(message -> message.containsKey("_links"))
-          .map(message -> (Map) message.get("_links"))
-          .filter(links -> links.containsKey("self"))
-          .map(links -> (Map) links.get("self"))
-          .map(self -> (String) self.get("href"))
-          .map(href -> restTemplate.getForObject(href, Map.class))
-          .collect(Collectors.toList());
-
+              .filter(message -> message.containsKey("_links"))
+              .map(message -> (Map) message.get("_links"))
+              .filter(links -> links.containsKey("self"))
+              .map(links -> (Map) links.get("self"))
+              .map(self -> (String) self.get("href"))
+              .map(href -> restTemplate.getForObject(href, Map.class))
+              .collect(Collectors.toList());
+    } catch (HttpStatusCodeException e) {
+      // Istio would've performed circuit breaking and retries
+      // but it doesn't handle bulkheads / returning default values on full failures.
+      log.error("Error from Guestbook Service, falling back", e);
+      return allFallback();
+    }
   }
 }
