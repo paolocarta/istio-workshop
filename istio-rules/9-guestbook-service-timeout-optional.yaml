@@ -9,8 +9,8 @@ spec:
   - route:
     - destination:
         host: guestbook-service
-    timeout: 1s
+    timeout: 2s
     fault:
       delay:
         percent: 100
-        fixedDelay: 2s
+        fixedDelay: 4s
