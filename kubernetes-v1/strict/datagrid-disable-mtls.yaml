@@ -1,0 +1,20 @@
+apiVersion: "authentication.istio.io/v1alpha1"
+kind: "Policy"
+metadata:
+  name: datagrid-no-mtls
+  labels:
+    type: workshop
+spec:
+  targets:
+  - name: cache-service   # The name of *your* K8s Service
+---
+apiVersion: networking.istio.io/v1alpha3
+kind: DestinationRule
+metadata:
+  name: datagrid-strict-no-mtls
+spec:
+  host: cache-service   # The name of *your* K8s Service
+  trafficPolicy:
+    tls:
+      mode: DISABLE
+
