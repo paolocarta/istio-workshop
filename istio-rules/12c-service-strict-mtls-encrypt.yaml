@@ -2,7 +2,6 @@ apiVersion: "networking.istio.io/v1alpha3"
 kind: "DestinationRule"
 metadata:
   name: "default"
-  namespace: "istio-demo-app"
 spec:
   host: "guestbook-service.istio-demo-app.svc.cluster.local"
   trafficPolicy:
@@ -13,7 +12,6 @@ apiVersion: "authentication.istio.io/v1alpha1"
 kind: "Policy"
 metadata:
   name: "guestbook-service-policy"
-  namespace: "istio-demo-app"
 spec:
   targets:
   - name: guestbook-service
