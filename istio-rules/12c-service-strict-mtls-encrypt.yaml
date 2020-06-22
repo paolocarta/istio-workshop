@@ -3,6 +3,7 @@ kind: "DestinationRule"
 metadata:
   name: "default"
 spec:
+  ## replace namespace
   host: "guestbook-service.istio-demo-app.svc.cluster.local"
   trafficPolicy:
     tls:

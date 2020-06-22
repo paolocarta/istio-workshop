@@ -3,7 +3,8 @@ kind: "DestinationRule"
 metadata:
   name: "default"
 spec:
-  host: "*.istio-demo-app.svc.cluster.local"
+  ##replace the namespace
+  host: "*.istio-demo-app.svc.cluster.local" 
   trafficPolicy:
     tls:
       mode: ISTIO_MUTUAL
