@@ -35,7 +35,7 @@ spec:
         - name: APPLICATION_NAME
           value: cache-service
         - name: APPLICATION_URL
-          value: cache-service.demo-datagrid
+          value: cache-service
         - name: SASL_MECHANISM
           value: DIGEST-MD5
         - name: USE_AUTH
