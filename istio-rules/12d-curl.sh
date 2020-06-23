@@ -1,1 +1,1 @@
-kubectl run -i --tty curl --image=curlimages/curl -- sh
+kubectl run curl -it --image=curlimages/curl --rm -- sh
