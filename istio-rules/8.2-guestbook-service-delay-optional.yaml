@@ -11,5 +11,5 @@ spec:
         host: guestbook-service
     fault:
       delay:
-        percent: 100
+        percent: 50
         fixedDelay: 2s
