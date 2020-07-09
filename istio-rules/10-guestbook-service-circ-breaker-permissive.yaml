@@ -13,6 +13,6 @@ spec:
         maxRequestsPerConnection: 1
     outlierDetection:
       consecutiveErrors: 2
-      interval: 5s
-      baseEjectionTime: 30s
+      interval: 10s
+      baseEjectionTime: 60s
       maxEjectionPercent: 100
