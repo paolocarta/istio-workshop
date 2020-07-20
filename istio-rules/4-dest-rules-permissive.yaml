@@ -11,3 +11,13 @@ spec:
   - name: v2
     labels:
       version: "2.0"
+
+  # trafficPolicy:
+  #   loadBalancer:
+  #     # simple: one of ROUND_ROBIN, RANDOM, LEAST_CONN
+  #     consistentHash:
+  #       # useSourceIp: true
+  #       httpHeaderName: my-header
+  #       # httpCookie:
+  #       #   name: user
+  #       #   ttl: 300s
