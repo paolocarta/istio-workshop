@@ -4,7 +4,7 @@ metadata:
   name: "default"
 spec:
   ## replace namespace
-  host: "guestbook-service.istio-demo-app.svc.cluster.local"
+  host: "guestbook-service.istio-paolocarta-demo-app.svc.cluster.local"
   trafficPolicy:
     tls:
       mode: ISTIO_MUTUAL

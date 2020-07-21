@@ -27,6 +27,7 @@ spec:
     spec:
       restartPolicy: Always
       terminationGracePeriodSeconds: 30
+      serviceAccountName: guestbook-ui
       containers:
       - name: guestbook-ui
         image: clamer/guestbook-ui:2.0-infinispan

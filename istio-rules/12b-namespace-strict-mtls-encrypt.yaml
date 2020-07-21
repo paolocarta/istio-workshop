@@ -4,7 +4,34 @@ metadata:
   name: "default"
 spec:
   ##replace the namespace
-  host: "*.istio-demo-app.svc.cluster.local" 
+  host: "*.istio-paolocarta-demo-app.svc.cluster.local" 
+  trafficPolicy:
+    tls:
+      mode: ISTIO_MUTUAL
+####
+#### The following rules are for cleanup only 
+####
+---
+apiVersion: networking.istio.io/v1alpha3
+kind: DestinationRule
+metadata:
+  name: guestbook-ui
+spec:
+  host: guestbook-ui
+  trafficPolicy:
+    tls:
+      mode: ISTIO_MUTUAL
+  subsets:
+  - name: v1
+    labels:
+      version: "1.0"
+---
+apiVersion: networking.istio.io/v1alpha3
+kind: DestinationRule
+metadata:
+  name: guestbook-service
+spec:
+  host: guestbook-service
   trafficPolicy:
     tls:
       mode: ISTIO_MUTUAL
