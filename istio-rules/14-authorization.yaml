@@ -16,3 +16,23 @@ spec:
     to:
     - operation:
         methods: ["GET", "POST"]
+        # paths: ["/test/*", "*/info"]
+---
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+  name: hello-service-allow-ui-only
+  namespace: istio-paolocarta-demo-app
+spec:
+  selector:
+    matchLabels:
+      app: helloworld-service
+  rules:
+  - from:
+    - source:
+        principals: ["cluster.local/ns/istio-paolocarta-demo-app/sa/guestbook-ui"]
+    - source:
+        namespaces: ["istio-paolocarta-demo-app"]
+    to:
+    - operation:
+        methods: ["GET"]
