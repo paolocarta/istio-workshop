@@ -11,8 +11,8 @@ spec:
   - from:
     - source:
         principals: ["cluster.local/ns/istio-paolocarta-demo-app/sa/guestbook-ui"]
-    - source:
-        namespaces: ["istio-paolocarta-demo-app"]
+    # - source:
+    #     namespaces: ["istio-paolocarta-demo-app"]
     to:
     - operation:
         methods: ["GET", "POST"]
@@ -31,8 +31,8 @@ spec:
   - from:
     - source:
         principals: ["cluster.local/ns/istio-paolocarta-demo-app/sa/guestbook-ui"]
-    - source:
-        namespaces: ["istio-paolocarta-demo-app"]
+    # - source:
+    #     namespaces: ["istio-paolocarta-demo-app"]
     to:
     - operation:
         methods: ["GET"]
