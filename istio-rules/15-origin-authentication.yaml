@@ -5,6 +5,9 @@ metadata:
 spec:
   targets:
   - name: guestbook-ui
+  peers:
+  - mtls:
+      mode: STRICT
   origins:
   - jwt:
       # issuer: "keycloak-sso.svc/auth/realms/istio-workshop"
