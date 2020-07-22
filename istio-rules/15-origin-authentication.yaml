@@ -7,25 +7,28 @@ spec:
   - name: guestbook-ui
   origins:
   - jwt:
-      issuer: "https://keycloak-sso-shared.apps.cluster.domain.com/auth/realms/microservices-demo"
-      jwksUri: "https://keycloak-sso-shared.apps.cluster.domain.com/auth/realms/microservices-demo/protocol/openid-connect/certs"
+      # issuer: "keycloak-sso.svc/auth/realms/istio-workshop"
+      issuer: "testing@secure.istio.io"
+      jwksUri: "https://gist.githubusercontent.com/lordofthejars/7dad589384612d7a6e18398ac0f10065/raw/ea0f8e7b729fb1df25d4dc60bf17dee409aad204/jwks.json"
+      # jwksUri: "keycloak-sso.svc/auth/realms/istio-workshop/protocol/openid-connect/certs"
       triggerRules:
       - excludedPaths:
         - exact: /health_check
         - prefix: /status/
+        - prefix: /actuator
   principalBinding: USE_ORIGIN
----
-# This lets the context-scraper service make external service calls to googleapis
-apiVersion: networking.istio.io/v1alpha3
-kind: ServiceEntry
-metadata:
-  name: keycloak-egress
-spec:
-  hosts:
-  - "keycloak-sso-shared.apps.cluster.domain.com"
-  ports:
-  - number: 443
-    name: https
-    protocol: HTTPS
-  resolution: DNS
-  location: MESH_EXTERNAL
+#
+# ---
+# apiVersion: networking.istio.io/v1alpha3
+# kind: ServiceEntry
+# metadata:
+#   name: keycloak-egress
+# spec:
+#   hosts:
+#   - "keycloak-sso-shared.apps.cluster.domain.com"
+#   ports:
+#   - number: 443
+#     name: https
+#     protocol: HTTPS
+#   resolution: DNS
+#   location: MESH_EXTERNAL
